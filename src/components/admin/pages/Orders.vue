@@ -63,12 +63,8 @@ export default {
         return {
             orders: [],
             pagination: {},
-            tempProduct: {},
             isNew: false,
-            isLoading: false,
-            status: {
-                fileUploading: false
-            }
+            isLoading: false
         }
     },
     methods: {

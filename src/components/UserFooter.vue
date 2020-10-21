@@ -1,25 +1,34 @@
 <template>
   <div>
-    <footer class="bg-light text-muted py-5">
+    <footer class="footer py-3 mt-5">
       <div class="container">
-        <ul class="list-inline text-center">
-          <li class="list-inline-item">© Copright 2017 六角血拼賣賣</li>
+        <ul class="list-inline text-center contact-info mb-2">
           <li class="list-inline-item">
-            <a class="text-info" href="#">
-              <i class="fa fa-instagram" aria-hidden="true"></i> Instagrame</a
-            >
+            <a href="#" class="text-primary"
+              ><i class="fab fa-facebook-f text-white"></i
+            ></a>
           </li>
           <li class="list-inline-item">
-            <a class="text-info" href="#">
-              <i class="fa fa-facebook-square" aria-hidden="true"></i>
-              Facebook</a
-            >
+            <a href="#" class="text-primary"><i class="fab fa-github text-white"></i></a>
           </li>
           <li class="list-inline-item">
-            <a class="text-info" href="#">About</a>
+            <a href="#" class="text-primary"
+              ><i class="fab fa-instagram text-white"></i
+            ></a>
+          </li>
+          <li class="list-inline-item">
+            <a
+              href="mailto:deanocean5656@gmail.com"
+              type="mail"
+              class="text-primary"
+              ><i class="fas fa-envelope text-white"></i
+            ></a>
           </li>
         </ul>
-        <p class="text-center">Made with Bootstrap4</p>
+        <p class="text-center copyright">
+          ©Copright 2020 Produeced by
+          <a href="mailto:deanocean5656@gmail.com" type="mail">Dean Huang</a>
+        </p>
       </div>
     </footer>
   </div>
@@ -29,5 +38,26 @@
 export default {};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+
+.footer {
+    border-top: 1px solid #dee2e6;
+}
+.contact-info {
+    margin-bottom: 5px;
+    margin-top: 15px;
+    li {
+      font-size: 1.7rem;
+      height: 42px;
+      width: 42px;
+    }
+}
+.copyright {
+  color: #fff;
+  font-size: 0.8rem;
+  a {
+    color: #ecbf42;
+  }
+}
 </style>

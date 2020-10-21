@@ -7,9 +7,6 @@
 <script>
 import $ from 'jquery';
 
-import './assets/js/jquery.ripples';
-$('body').ripples();
-
 export default {
   name: 'App'
 }

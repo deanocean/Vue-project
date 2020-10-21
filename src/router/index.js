@@ -10,22 +10,20 @@ import Orders from '@/components/admin/pages/Orders'
 import Coupons from '@/components/admin/pages/Coupons'
 import CustomerOrders from '@/components/admin/pages/CustomerOrders';
 import UserHome from '@/components/UserHome';
+import UserProducts from '@/components/UserProducts';
+import UserProdDetail from '@/components/UserProdDetail';
+import Checkout from '@/components/Checkout';
 // 自訂的分頁元件
 
 Vue.use(VueRouter)
 
 export default new VueRouter({
+    linkActiveClass: 'active',
     routes: [
         {
             path: '*',
             redirect: 'login'
         },
-        // {
-        //     name: 'HelloWorld', // 元件呈現的名稱
-        //     path: '/', // 對應的虛擬路徑
-        //     component: Home, // 對應的元件
-        //     meta: { requiresAuth: true }
-        // },
         {
             name: '登入',
             path: '/login',
@@ -35,6 +33,7 @@ export default new VueRouter({
             name: '後台',
             path: '/admin',
             component: Dashboard,
+            meta: { requiresAuth: true },
             children: [
                 { 
                     name: '產品列表',
@@ -72,13 +71,23 @@ export default new VueRouter({
             name: '前台',
             path: '/',
             component: UserHome,
-            // children: [
-            //     { 
-            //         name: '產品卡片列表',
-            //         path: 'customer_order',
-            //         component: CustomerOrders,
-            //     }
-            // ]
+            children: [
+                {
+                    name: '前台產品詳細',
+                    path: '',
+                    component: UserProducts,
+                },
+                {
+                    name: '前台產品詳細',
+                    path: 'productdetail/:prodId',
+                    component: UserProdDetail,
+                },
+                {
+                    name: '購物車頁面',
+                    path: 'checkout',
+                    component: Checkout,
+                }
+            ]
         },
     ]
 })

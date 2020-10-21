@@ -11,6 +11,7 @@ import App from './App'
 import router from './router'
 import './bus';
 import currencyFilter from './filters/currency.js';
+import dateFilter from './filters/date';
 
 import $ from 'jquery';
 window.$ = $;
@@ -22,6 +23,7 @@ axios.defaults.withCredentials = true;
 
 Vue.component('Loading', Loading);
 Vue.filter('currency', currencyFilter);
+Vue.filter('date', dateFilter);
 
 /* eslint-disable no-new */
 new Vue({

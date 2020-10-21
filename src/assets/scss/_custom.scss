@@ -1,3 +1,12 @@
+*, :after, :before {
+  box-sizing: border-box;
+}
+
 body {
-    background: linear-gradient(180deg, #3abbec 0%, #216c9a 70%, #095466);
-  }
+  background: linear-gradient(180deg, #3ABBEC 0%, #216c9a 60%, #095466) no-repeat;
+  background-size: cover;
+}
+
+.bg-black {
+  background-color: #000;
+}

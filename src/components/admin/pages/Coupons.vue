@@ -18,7 +18,7 @@
                 <tr v-for="(item, key) in coupons" :key="item.id">
                     <td>{{ item.title }}</td>
                     <td>{{ item.percent }}</td>
-                    <td>{{ new Date(item.due_date).toLocaleString() }}</td>
+                    <td>{{ item.due_date | date }}</td>
                     <td>
                         <span v-if="item.is_enabled" class="text-success">啟用</span>
                         <span v-else>未啟用</span>
@@ -87,7 +87,7 @@
                                 <div class="form-group">
                                     <label for="due_date">到期日</label>
                                     <input type="date" class="form-control" id="due_date"
-                                        v-model="tempCoupon.due_date">
+                                        v-model="due_date">
                                 </div>
 
                                 <div class="form-group">
@@ -153,11 +153,19 @@ export default {
             coupons: [],
             pagination: {},
             tempCoupon: {},
+            due_date: new Date(),
             isNew: false,
-            isLoading: false,
-            status: {
-                fileUploading: false
-            }
+            isLoading: false
+        }
+    },
+    watch: {
+        due_date(){
+            const vm = this;
+            // 將date換算成unix timestamp
+            // 2種寫法都可以，結果一樣
+            const timestamp = Math.floor(new Date(vm.due_date) / 1000);
+            const timestamp2 = (new Date(vm.due_date).getTime() / 1000);
+            vm.tempCoupon.due_date = timestamp;
         }
     },
     methods: {
@@ -173,11 +181,16 @@ export default {
             })
         },
         openModal (isNew, item, deleteItem = false) {
+            const vm = this;
             if(isNew){
                 this.tempCoupon = {};
                 this.isNew = true;
             } else {
                 this.tempCoupon = Object.assign({}, item);
+                // 在編輯的視窗中顯示出上次存取的日期
+                // expected output: 2011-10-05T14:48:00.000Z
+                const dateAndTime = new Date(vm.tempCoupon.due_date * 1000).toISOString().split('T');
+                vm.due_date = dateAndTime[0];
                 this.isNew = false;
             }
 
@@ -195,7 +208,7 @@ export default {
                 api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
                 httpMethod = 'put';
             } 
-            vm.tempCoupon.due_date = (new Date(vm.tempCoupon.due_date).getTime()); //將date換算成unix timestamp
+            vm.due_date = new Date(vm.tempCoupon.due_date * 1000);
             this.$http[httpMethod](api, {data: vm.tempCoupon}).then((response) => {
                 console.log(response.data)
                 if(response.data.success){
