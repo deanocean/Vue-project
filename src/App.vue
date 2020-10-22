@@ -5,10 +5,16 @@
 </template>
 
 <script>
-import $ from 'jquery';
 
 export default {
-  name: 'App'
+  name: 'App',
+  created() {
+    $('body').ripples({
+      resolution: 512,
+      dropRadius: 20,
+      perturbance: 0.04,
+    });
+  }
 }
 </script>
 

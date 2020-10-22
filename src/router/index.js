@@ -13,6 +13,7 @@ import UserHome from '@/components/UserHome';
 import UserProducts from '@/components/UserProducts';
 import UserProdDetail from '@/components/UserProdDetail';
 import Checkout from '@/components/Checkout';
+import Purchase from '@/components/Purchase';
 // 自訂的分頁元件
 
 Vue.use(VueRouter)
@@ -86,6 +87,11 @@ export default new VueRouter({
                     name: '購物車頁面',
                     path: 'checkout',
                     component: Checkout,
+                },
+                {
+                    name: '確認訂單',
+                    path: 'purchase',
+                    component: Purchase,
                 }
             ]
         },

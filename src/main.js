@@ -13,7 +13,10 @@ import './bus';
 import currencyFilter from './filters/currency.js';
 import dateFilter from './filters/date';
 
+
 import $ from 'jquery';
+import 'jquery.ripples';
+
 window.$ = $;
 
 
