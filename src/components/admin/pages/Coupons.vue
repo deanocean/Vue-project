@@ -4,10 +4,11 @@
         <div class="text-right mt-4">
             <button class="btn btn-primary" @click="openModal(true)">建立新的優惠券</button>
         </div>
-        <table class="table mt-4">
-            <thead>
+        <table class="table table-striped table-hover table-light mt-4">
+            <thead class="table-primary">
                 <tr>
                     <th>名稱</th>
+                    <th>代碼</th>
                     <th width="200">折扣百分比</th>
                     <th width="200">到期日</th>
                     <th width="200">是否啟用</th>
@@ -17,6 +18,7 @@
             <tbody>
                 <tr v-for="(item, key) in coupons" :key="item.id">
                     <td>{{ item.title }}</td>
+                    <td>{{ item.code }}</td>
                     <td>{{ item.percent }}</td>
                     <td>{{ item.due_date | date }}</td>
                     <td>

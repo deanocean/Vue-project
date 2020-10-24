@@ -127,10 +127,12 @@ export default {
                 product_id: id,
                 qty
             }
+            vm.isLoading = true;
             this.$http.post(api, { data: cart }).then((response) => {
                 // console.log(response.data)
                 vm.$bus.$emit('cartRefresh');
                 vm.$bus.$emit('message:push', response.data.message, 'success');
+                vm.isLoading = false;
             })
         },
     },

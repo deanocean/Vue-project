@@ -10,7 +10,7 @@
         <div class="col-lg-4 col-md-5 order-md-1 mb-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="check-title text-white">購物清單</span>
-            <span class="badge badge-pill text-accent" style="font-size: 0.95rem;">共 {{cart.carts.length}} 項</span>
+            <span class="badge badge-pill text-accent" style="font-size: 0.95rem;" v-if="cart.carts">共 {{cart.carts.length}} 項</span>
           </h4>
           <ul class="list-group mb-3 checkout-cart">
             <li class="glass align-items-center list-group-item d-flex pl-2 mb-3" v-for="item in cart.carts">
@@ -59,11 +59,12 @@
                   type="submit"
                   class="btn btn-sub text-white"
                   @click="addCouponCode"
-                >送 出</button>
+                >套 用</button>
               </div>
             </div>
-            <div class="text-danger mt-1 mb-0" v-if="coupon_message !== ''">※ {{coupon_message}}</div>
           </form>
+          <div class="text-subLight mt-1 mb-0" v-if="coupon_message !== ''">※ {{coupon_message}}</div>
+          <div class="coupon-code"><i>Code: </i>aqua123</div>
         </div>
         <div class="col-lg-8 col-md-7 order-md-2 orderInfo">
           <h4 class="mb-3 check-title text-white">訂單資訊</h4>
@@ -141,15 +142,14 @@
                 <small class="text-subLight" v-if="errors[0]">{{ errors[0] }}</small>
               </validation-provider>
             </div>
-            <div class="mb-3">
+            <div>
               <label for="memo">
                 備註
                 <small class="text-subLight">（選填）</small>
               </label>
               <textarea v-model="form.message" rows="5" name="memo" id="memo" placeholder class="form-control"></textarea>
             </div>
-            <hr class="my-4" />
-            <button type="submit" class="btn btn-long btn-block btn-accent">
+            <button type="submit" class="mt-5 btn btn-long btn-block btn-accent">
               下一步
               <i class="fas fa-caret-right"></i>
             </button>
@@ -262,6 +262,25 @@ export default {
 .orderInfo {
   input, textarea {
     background-color: rgba(255, 255, 255, 0.85);
+  }
 }
+.coupon-code {
+  margin-left: auto;
+  width: 120px;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: .2em;
+  font-weight: bold;
+  color: #85d2ff;
+  text-shadow: 0 0 6px rgba(200, 200, 255,.8);
+  border-radius: 8px;
+  margin-top: 16px;
+  padding: 8px 15px;
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 10px -10px inset rgba(0, 0, 0, 0.2);
+  i {
+    font-size: 14px;
+    font-weight: normal;
+  }
 }
 </style>

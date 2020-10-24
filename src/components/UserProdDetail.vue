@@ -19,10 +19,10 @@
                 </div>
                 <div class="col-md-4 mb-5">
                     <div class="sticky-top" style="top: 10px;">
-                        <h1 class="h2 pb-3 text-white border-bottom border-white">{{product.title}}</h1>
-                        <span class="tag bg-sub mt-3">{{product.category}}</span>
+                        <h1 class="h2 text-white">{{product.title}}</h1>
+                        <span class="tag bg-sub mt-4">{{product.category}}</span>
                         <p class="card-text text-white mt-3">
-                            <span class="d-block h6">【 產品說明 】</span>
+                            <span class="d-block h6">- 產品詳細 -</span>
                             {{product.content}}
                         </p>
                         <div class="d-flex my-3 align-items-end justify-content-start">
@@ -35,7 +35,7 @@
                             <option v-for="num in 10" :value="num" :key="num">選購 {{num}} 隻</option>
                         </select>
                         <div class="h4 mt-3 text-accent text-right">
-                            <span class="h6">總計： </span><strong>{{(product.price * product.num) | currency}}</strong>
+                            <span class="h6">總計 </span><strong>{{(product.price * product.num) | currency}}</strong>
                         </div>
                         <hr class="border-white my-4">
                         <div class="d-flex justify-content-between">

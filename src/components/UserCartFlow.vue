@@ -8,7 +8,7 @@
       <div class="flow-item col-3 mx-4">
         <div class="groove alert alert-light alert-rounded mb-0 border-0 step-line" role="alert"
         :class="[{ 'active' : currentPage === 2 },{ 'active' : currentPage === 3 }]"
-        >2. 確認訂單</div>
+        >2. 結帳</div>
       </div>
       <div class="flow-item col-3 mx-4">
         <div class="groove alert alert-light alert-rounded mb-0 border-0 step-line" role="alert"

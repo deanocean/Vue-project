@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div class="container main-contant py-5">
       <h1 class="h2 text-center mb-3 text-white">購物車頁面</h1>
 
@@ -12,39 +13,37 @@
               <!-- <i class="far fa-file-alt"></i> -->
             </span> 購買資訊
           </h2>
-          <table class="table table table-light table-striped shadow-sm">
-            <thead class="bg-primary text-white">
+          <table class="table table-light table-striped shadow-lg">
+            <thead class="bg-info text-white">
               <tr>
-                <th colspan="2" class="px-2">商品資訊</th>
-                <th>數量</th>
-                <th class="px-2 text-right">金額</th>
+                <th colspan="2" class="pl-4 pr-2 border-0">商品資訊</th>
+                <th width="150" class="text-center border-0">數量</th>
+                <th width="100" class="border-0">金額</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="item in order.products" :key="item.id">
-                <td width="80" class="align-middle px-2">
+                <td width="80" class="align-middle pl-4 pr-2">
                   <div class="cart-img mt-1" :style="'background-image: url('+item.product.imageUrl+');'"></div>
                 </td>
                 <td class="align-middle px-2">
-                  <div class="cart-title">
-                    <div class="h6">{{item.product.title}}</div>
+                  <div class="cart-title d-flex justify-content-between align-items-center">
+                    <div class="h6 mb-0">{{item.product.title}}</div>
                     <small v-if="item.coupon" class="text-warning d-block">已套用優惠券</small>
                   </div>
-                  <!---->
                 </td>
-                <td class="align-middle px-2">
+                <td class="align-middle px-2 text-center">
                   <div class="cart-unit text-dark">x {{item.qty}}</div>
                 </td>
-                <td class="align-middle text-right text-dark px-2">
+                <td class="align-middle text-right text-dark pr-4">
                   <div class>{{item.final_total | currency}}</div>
-                  <!---->
                 </td>
               </tr>
             </tbody>
           </table>
-          <div class="d-flex justify-content-end align-items-baseline px-2 pt-2">
+          <div class="d-flex justify-content-end align-items-baseline px-2 pt-2 text-white">
             <span class="pr-3">總計</span>
-            <span class="h4 text-white">{{order.total | currency }}</span>
+            <span class="h4">{{order.total | currency }}</span>
           </div>
         </div>
 
@@ -55,31 +54,31 @@
               <!-- <i class="far fa-paper-plane"></i> -->
             </span> 個人資訊
           </h2>
-          <table class="table table-striped shadow-sm">
+          <table class="table table-light table-striped shadow">
             <thead>
-              <tr class="bg-primary text-white">
-                <th colspan="2" class="py-1">訂單資料</th>
+              <tr class="bg-info text-white">
+                <th colspan="2" class="pl-4 pr-2 border-0">訂單資料</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="text-dark">姓名</td>
+                <td class="text-dark pl-4">姓名</td>
                 <td>{{order.user.user}}</td>
               </tr>
               <tr>
-                <td class="text-dark">電話</td>
+                <td class="text-dark pl-4">電話</td>
                 <td>{{order.user.tel}}</td>
               </tr>
               <tr>
-                <td class="text-dark">Email</td>
+                <td class="text-dark pl-4">Email</td>
                 <td>{{order.user.email}}</td>
               </tr>
               <tr>
-                <td class="text-dark">地址</td>
+                <td class="text-dark pl-4">地址</td>
                 <td>{{order.user.address}}</td>
               </tr>
               <tr>
-                <td class="text-dark">付款狀態</td>
+                <td class="text-dark pl-4">付款狀態</td>
                 <td>
                   <span v-if="!order.is_paid" class="text-danger font-weight-bold">尚未付款</span>
                   <span v-else class="text-success font-weight-bold">已付款</span>
@@ -87,7 +86,9 @@
               </tr>
             </tbody>
           </table>
-          <button class="float-right mb-4 btn btn-danger text-white" @click.prevent="payOrder">確認付款</button>
+          <div class="text-center">
+            <button class="mt-5 btn btn-block btn-accent text-white" @click.prevent="payOrder">確認付款</button>
+          </div>
         </div>
       </div>
     </div>
@@ -127,10 +128,10 @@ export default {
       vm.isLoading = true;
       this.$http.post(api).then((response) => {
           // console.log(response.data)
-          if(response.data.success){
-            vm.$router.push(`/purchaseCompleted`)
-          }
           vm.isLoading = false;
+          if(response.data.success){
+            vm.$router.push(`/purchaseCompleted`);
+          }
       })
     }
   },

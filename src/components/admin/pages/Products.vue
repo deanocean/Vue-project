@@ -4,8 +4,8 @@
         <div class="text-right mt-4">
             <button class="btn btn-primary" @click="openModal(true)">建立新的產品</button>
         </div>
-        <table class="table mt-4">
-            <thead>
+        <table class="table table-striped table-hover table-light mt-4">
+            <thead class="table-primary">
                 <tr>
                     <th width="120">分類</th>
                     <th>產品名稱</th>
