@@ -23,7 +23,7 @@
           </button>
           <div
             class="dropdown-menu dropdown-menu-right p-3"
-            style="min-width: 300px; z-index: 1050;"
+            style="min-width: 400px; z-index: 1050;"
             data-offset="400"
           >
             <h6 class="font-weight-bold">已選擇商品</h6>
@@ -41,6 +41,7 @@
                       <i class="far fa-trash-alt"></i>
                     </button>
                   </td>
+                  <td class="align-middle"><div class="imgBox" :style="'background-image: url('+item.product.imageUrl+');'"></div></td>
                   <td class="align-middle">{{item.product.title}}</td>
                   <td class="align-middle">{{item.qty}} 件</td>
                   <td class="align-middle text-right">${{item.final_total}}</td>
@@ -49,7 +50,7 @@
             </table>
             <router-link
               to="/checkout"
-              class="btn btn-primary btn-block"
+              class="btn btn-accent btn-block"
             >
               <i class="fa fa-cart-plus" aria-hidden="true"></i> 結帳去
             </router-link>
@@ -110,5 +111,12 @@ export default {
 }
 .table-sm th, .table-sm td {
     padding: 0.5rem;
+}
+.imgBox {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 }
 </style>

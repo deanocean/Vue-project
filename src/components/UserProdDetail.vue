@@ -3,37 +3,48 @@
         <loading :active.sync="isLoading"></loading>
         <div class="container main-contant mb-1">
             <nav aria-label="breadcrumb" role="navigation">
-            <ol class="breadcrumb bg-transparent pl-0">
+            <ol class="breadcrumb bg-transparent pl-0 mt-2">
                 <li class="breadcrumb-item">
-                <a href="#">首頁</a>
+                    <router-link to="/" class="text-white">首頁</router-link>
                 </li>
-                <li class="breadcrumb-item">
-                <a href="#">{{product.category}}</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">{{product.title}}</li>
+                <!-- <li class="breadcrumb-item">
+                    <router-link to="/" class="text-white">{{product.category}}</router-link>
+                </li> -->
+                <li class="breadcrumb-item active text-subLight" aria-current="page">{{product.title}}</li>
             </ol>
             </nav>
             <div class="row">
                 <div class="col-md-8">
                     <img :src="product.imageUrl" class="w-100" alt="">
-                    <p class="card-text text-white mt-4">{{product.content}}</p>
                 </div>
                 <div class="col-md-4 mb-5">
                     <div class="sticky-top" style="top: 10px;">
-                        <h1 class="h2">{{product.title}}</h1>
-                        <div class="d-flex my-3 align-items-end justify-content-end">
-                            <del class="text-muted">{{product.origin_price}}</del>
-                            <div class="h3 mb-0 ml-auto text-danger">
-                            <small>優惠價 $</small>
-                            <strong>{{product.price}}</strong>
+                        <h1 class="h2 pb-3 text-white border-bottom border-white">{{product.title}}</h1>
+                        <span class="tag bg-sub mt-3">{{product.category}}</span>
+                        <p class="card-text text-white mt-3">
+                            <span class="d-block h6">【 產品說明 】</span>
+                            {{product.content}}
+                        </p>
+                        <div class="d-flex my-3 align-items-end justify-content-start">
+                            <div class="h4 mb-0 mr-3 text-accent">
+                                {{product.price | currency }}
                             </div>
+                            <del class="text-white">{{product.origin_price | currency}}</del>
                         </div>
-                        <hr>
-                        <div class="input-group mt-3">
-                            <select name="" class="form-control mr-1" id="" v-model="product.num">
-                                <option v-for="num in 10" :value="num" :key="num">選購 {{num}} 隻</option>
-                            </select>
-                            <button href="shoppingCart-checkout.html" class="btn btn-primary"
+                        <select name="" class="form-control mr-1" id="" v-model="product.num">
+                            <option v-for="num in 10" :value="num" :key="num">選購 {{num}} 隻</option>
+                        </select>
+                        <div class="h4 mt-3 text-accent text-right">
+                            <span class="h6">總計： </span><strong>{{(product.price * product.num) | currency}}</strong>
+                        </div>
+                        <hr class="border-white my-4">
+                        <div class="d-flex justify-content-between">
+                            <router-link to="/">
+                                <button class="btn btn-outline-subLight">
+                                <i class="fas fa-caret-left"></i> 回到商品區
+                                </button>
+                            </router-link>
+                            <button href="shoppingCart-checkout.html" class="btn btn-accent"
                                 @click="addtoCart(product.id, product.num)">
                             <i class="fa fa-cart-plus" aria-hidden="true"></i> 加入購物車
                             </button>
@@ -85,9 +96,9 @@ export default {
                 qty
             }
             this.$http.post(api, { data: cart }).then((response) => {
-                // console.log(response.data)
+                console.log(response.data)
                 vm.$bus.$emit('cartRefresh');
-                // $('#productModal').modal('hide');
+                vm.$bus.$emit('message:push', response.data.message, 'success');
             })
         },
     },

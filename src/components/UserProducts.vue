@@ -37,22 +37,22 @@
                                     "
                                     :style="{backgroundImage: `url(${item.imageUrl})`}"
                                     ></div>
-                                    <div class="card-body text-left">
-                                        <span class="tag mb-2 d-inline-block">{{item.category}}</span>
+                                    <div class="card-body text-left pt-3 pb-0">
+                                        <span class="tag bg-sub mb-2">{{item.category}}</span>
                                         <h5 class="card-title mb-2">{{item.title}}</h5>
-                                        <p class="card-text">{{item.content}}</p>
+                                        <p class="card-text text-truncate">{{item.content}}</p>
                                         <div class="d-flex justify-content-between align-items-baseline">
                                             <div class="h5" v-if="!item.price">{{item.origin_price}} </div>
                                             <del class="h6" v-if="item.price">$ {{item.origin_price}} </del>
                                             <div class="h5" v-if="item.price">$ {{item.price}} </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer border-top-0 d-flex justify-content-between">
-                                        <a @click.prevent="productLink(item.id)" class="btn btn-outline-primary btn-sm">
-                                            <i class="fa fa-file"></i> Detail
+                                    <div class="card-footer border-top-0 d-flex justify-content-between pb-3">
+                                        <a @click.prevent="productLink(item.id)" class="btn btn-outline-primary btn-sm flex-grow-1 mr-2">
+                                            <i class="fa fa-file"></i> 查看更多
                                         </a>
-                                        <button class="btn btn-primary btn-sm" @click="addtoCart(item.id)">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>Add to Cart
+                                        <button class="btn btn-accent btn-sm flex-grow-0" @click="addtoCart(item.id)">
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> 加到購物車
                                         </button>
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@ export default {
             this.$http.post(api, { data: cart }).then((response) => {
                 // console.log(response.data)
                 vm.$bus.$emit('cartRefresh');
-                // $('#productModal').modal('hide');
+                vm.$bus.$emit('message:push', response.data.message, 'success');
             })
         },
     },
@@ -160,14 +160,13 @@ h1 {
 .card {
   background-color: rgba(255, 255, 255, 0.7) !important;
 }
-.tag {
-  background-color: #ecbf42;
-  border-radius: 2px;
-  color: #fff;
-  padding: 2px 4px;
-  font-size: 12px;
-}
 .card-footer {
   background: none !important;
+}
+.text-truncate {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: initial;
 }
 </style>

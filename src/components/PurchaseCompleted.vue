@@ -8,7 +8,7 @@
       <div class="frame mx-auto mt-5 p-5 glass text-center text-white">
           <h2 class="h3 text-white mt-2 mb-4">付款完成！</h2>
           <router-link to="/">
-            <button class="btn btn-outline-accent mt-4 mb-2">
+            <button class="btn btn-outline-accent mt-5 mb-2">
               <i class="fas fa-caret-left"></i> 繼續購物
             </button>
           </router-link>

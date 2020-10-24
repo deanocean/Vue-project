@@ -236,6 +236,9 @@ export default {
   created() {
     const vm = this;
     vm.getCart();
+    vm.$bus.$on('getCartInfo', (data) => {
+      vm.cart = data;
+    });
   },
 };
 </script>

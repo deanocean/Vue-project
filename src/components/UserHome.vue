@@ -1,6 +1,7 @@
 <template>
   <div>
     <UserNavbar />
+    <Alert />
     <router-view></router-view>
     <UserFooter />
     <CloseModal />
@@ -12,6 +13,7 @@ import UserNavbar from './UserNavbar';
 import UserFooter from './UserFooter';
 import UserProducts from './UserProducts';
 import CloseModal from './CloseModal';
+import Alert from './admin/AlertMessage';
 
 export default {
   name: 'UserHome',
@@ -24,6 +26,7 @@ export default {
     UserFooter,
     UserProducts,
     CloseModal,
+    Alert,
   },
 }
 </script>
