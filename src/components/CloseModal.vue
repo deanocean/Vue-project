@@ -22,7 +22,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>是否確認刪除商品</p>
+                <p>是否確認刪除「{{title}}」</p>
             </div>
             <div class="modal-footer">
                 <button
@@ -48,6 +48,7 @@ export default {
   data() {
       return {
           prodId: '',
+          title: '',
       }
   },
   methods: {
@@ -65,8 +66,9 @@ export default {
   },
   created() {
     const vm = this;
-    vm.$bus.$on('removeCart', (id) => {
+    vm.$bus.$on('removeCart', (id, title = '商品') => {
       vm.prodId = id;
+      vm.title = title;
     });
   },
 }

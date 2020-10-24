@@ -14,6 +14,7 @@ import UserProducts from '@/components/UserProducts';
 import UserProdDetail from '@/components/UserProdDetail';
 import Checkout from '@/components/Checkout';
 import Purchase from '@/components/Purchase';
+import PurchaseCompleted from '@/components/PurchaseCompleted';
 // 自訂的分頁元件
 
 Vue.use(VueRouter)
@@ -90,8 +91,13 @@ export default new VueRouter({
                 },
                 {
                     name: '確認訂單',
-                    path: 'purchase',
+                    path: 'purchase/:orderId',
                     component: Purchase,
+                },
+                {
+                    name: '付款完成',
+                    path: 'PurchaseCompleted',
+                    component: PurchaseCompleted,
                 }
             ]
         },

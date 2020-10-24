@@ -7,24 +7,38 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import "bootstrap";
 
+/* vee-validate */
+import { ValidationObserver, ValidationProvider, extend } from 'vee-validate';
+import { required, email } from 'vee-validate/dist/rules';
+import { localize } from 'vee-validate';
+import zh_TW from 'vee-validate/dist/locale/zh_TW.json';
+localize('zh_TW',zh_TW);
+extend('email', email)
+extend('required', {
+  ...required,
+  message: '此為必填欄位'
+});
+/* vee-validate */
+
 import App from './App'
 import router from './router'
 import './bus';
 import currencyFilter from './filters/currency.js';
 import dateFilter from './filters/date';
 
-
 import $ from 'jquery';
 import 'jquery.ripples';
 
 window.$ = $;
 
-
 Vue.use(VueAxios, axios)
+
 Vue.config.productionTip = false
 axios.defaults.withCredentials = true;
 
 Vue.component('Loading', Loading);
+Vue.component('ValidationObserver', ValidationObserver);
+Vue.component('ValidationProvider', ValidationProvider);
 Vue.filter('currency', currencyFilter);
 Vue.filter('date', dateFilter);
 

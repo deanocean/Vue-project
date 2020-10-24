@@ -36,7 +36,7 @@
                       class="btn btn-outline-danger btn-sm"
                       data-toggle="modal"
                       :data-title="`刪除 ${item.product.title} ${item.qty} 件`"
-                      @click="emitRemoveCart(item.id)"
+                      @click="emitRemoveCart(item.id, item.product.title)"
                     >
                       <i class="far fa-trash-alt"></i>
                     </button>
@@ -79,11 +79,13 @@ export default {
             // console.log(response.data)
             vm.cart = response.data.data;
             vm.isLoading = false;
+            
+            vm.$bus.$emit('getCartInfo', response.data.data);
         })
     },
-    emitRemoveCart (id) {
+    emitRemoveCart (id, title) {
         const vm = this;
-        vm.$bus.$emit('removeCart', id);
+        vm.$bus.$emit('removeCart', id, title);
     }
   },
   created() {

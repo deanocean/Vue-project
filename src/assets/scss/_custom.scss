@@ -3,10 +3,28 @@
 }
 
 body {
-  background: linear-gradient(180deg, #3ABBEC 0%, #216c9a 60%, #095466) no-repeat;
+  background: linear-gradient(180deg, #3ABBEC 0%, #216c9a 60%, #024b75) no-repeat;
   background-size: cover;
 }
 
 .bg-black {
   background-color: #000;
+}
+
+.glass {
+  color: #fff;
+  background-color: rgba(255,255,255, 0.05);
+  border: none;
+  box-shadow: 
+    0 3px 3px inset rgba(255,255,255, .5),
+    0 0 15px rgba(0,0,0,.15);
+  &-white {
+    box-shadow: 
+    0 3px 3px inset rgba(255,255,255, 1),
+    0 0 15px rgba(0,0,0,.2);
+    background-color: rgba(255,255,255, .9);
+  }
+  &-blue {
+    background-color: rgba(49, 89, 175, 0.5);
+  }
 }

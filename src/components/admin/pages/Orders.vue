@@ -13,15 +13,14 @@
             </thead>
             <tbody>
                 <tr v-for="(item) in orders" :key="item.id">
-                    <td>{{ item.paid_date }}</td>
+                    <td>{{ item.create_at | date }}</td>
                     <td>{{ item.user.email }}</td>
                     <td>
                         <template v-for="product in item.products">
-                            {{ product }}<br>
+                            {{ product.product.title }}<br>
                         </template>
                     </td>
                     <td class="text-right">{{ item.total | currency }}</td>
-                    <td class="text-right">{{ item.price | currency }}</td>
                     <td>
                         <span v-if="item.is_paid" class="text-success">已付款</span>
                         <span v-else>尚未付款</span>
