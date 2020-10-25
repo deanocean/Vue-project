@@ -40,7 +40,7 @@ export default {
             const token = response.data.token;
             const expired = response.data.expired;
             // console.log(token, expired)
-            // document.cookie = `hexToken=${token}; expires=${ new Date(expired) };`;
+            document.cookie = `hexToken=${token}; expires=${ new Date(expired) };`;
             vm.$router.push('/admin/products');
         }
         })
@@ -105,7 +105,7 @@ body {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-attachment: fixed;
-  background-image: url('https://images.unsplash.com/photo-1549074862-6173e20d02a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+  background-image: url('../../../assets/images/loginBg.jpg');
 }
 .form-signin {
   background: inherit; 

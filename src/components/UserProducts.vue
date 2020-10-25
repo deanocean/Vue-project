@@ -13,13 +13,13 @@
                 <!-- 左側選單 (List group) -->
                 <div class="sticky-top leftMenu list-group" id="list-tab" role="tablist" style="top: 20px;">
                     <a @click.prevent="currentPos = 'all'" class="btn btn-lg text-white btn-block mb-3 rounded-pill active" data-toggle="list"
-                    href="#all" role="tab">全部商品</a>
-                    <a @click.prevent="currentPos = 'tropical'" class="btn btn-lg text-white btn-block mb-3 rounded-pill" data-toggle="list"
-                    href="#tropical" role="tab">熱帶魚</a>
+                    role="tab">全部商品</a>
+                    <a @click.prevent="currentPos = 'tropical fish'" class="btn btn-lg text-white btn-block mb-3 rounded-pill" data-toggle="list"
+                    role="tab">熱帶魚</a>
                     <a @click.prevent="currentPos = 'jellyfish'" class="btn btn-lg text-white btn-block mb-3 rounded-pill" data-toggle="list"
-                    href="#jellyfish" role="tab">水母</a>
+                    role="tab">水母</a>
                     <a @click.prevent="currentPos = 'goldfish'" class="btn btn-lg text-white btn-block mb-3 rounded-pill" data-toggle="list"
-                    href="#goldfish" role="tab">金魚</a>
+                    role="tab">金魚</a>
                 </div>
                 </div>
                 <div class="col-md-9">
@@ -108,9 +108,6 @@ export default {
                 
                 if(vm.currentPos !== 'all'){
                     vm.products = vm.products.filter( (item)=> {
-                        if(vm.currentPos == 'tropical'){
-                            vm.currentPos = 'tropical fish';
-                        }
                         return vm.currentPos === item.category;
                     })
                     vm.pagination = {};

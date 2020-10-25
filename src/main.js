@@ -7,6 +7,12 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import "bootstrap";
 
+import App from './App'
+import router from './router'
+import './bus';
+import currencyFilter from './filters/currency.js';
+import dateFilter from './filters/date';
+
 /* vee-validate */
 import { ValidationObserver, ValidationProvider, extend } from 'vee-validate';
 import { required, email } from 'vee-validate/dist/rules';
@@ -20,14 +26,8 @@ extend('required', {
 });
 /* vee-validate */
 
-import App from './App'
-import router from './router'
-import './bus';
-import currencyFilter from './filters/currency.js';
-import dateFilter from './filters/date';
-
 import $ from 'jquery';
-import 'jquery.ripples';
+// import 'jquery.ripples';
 
 window.$ = $;
 

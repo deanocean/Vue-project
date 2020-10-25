@@ -18,7 +18,6 @@ import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import Alert from './AlertMessage';
 
-
 export default {
   name: 'Dashboard',
   data () {
@@ -29,8 +28,11 @@ export default {
     Sidebar, 
     Navbar,
     Alert
+  },
+  created () {
+    const myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
+    this.$http.defaults.headers.common.Authorization = myCookie;
   }
-  
 }
 </script>
 

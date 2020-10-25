@@ -33,7 +33,7 @@
                 否
                 </button>
                 <button type="button" class="btn btn-outline-danger px-4"
-                @click="removeCartItem(prodId)">
+                @click="removeCartItem">
                 是
                 </button>
             </div>
@@ -52,12 +52,12 @@ export default {
       }
   },
   methods: {
-    removeCartItem (id) {
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
+    removeCartItem () {
       const vm = this;
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${vm.prodId}`;
       vm.isLoading = true;
       this.$http.delete(api).then((response) => {
-          console.log(response.data)
+          // console.log(response.data)
           vm.$bus.$emit('cartRefresh');
           vm.isLoading = false;
           $('#removeModal').modal('hide');

@@ -51,20 +51,17 @@
             </li>
             <!---->
           </ul>
-          <form class="glass glass-white card p-2">
+          <form class="glass glass-white card p-2"
+            @submit.prevent="addCouponCode">
             <div class="input-group">
               <input type="text" placeholder="請輸入優惠碼" v-model="coupon_code" class="form-control" />
               <div class="input-group-append">
-                <button
-                  type="submit"
-                  class="btn btn-sub text-white"
-                  @click="addCouponCode"
-                >套 用</button>
+                <button type="submit" class="btn btn-sub text-white">套 用</button>
               </div>
             </div>
           </form>
           <div class="text-subLight mt-1 mb-0" v-if="coupon_message !== ''">※ {{coupon_message}}</div>
-          <div class="coupon-code"><i>Code: </i>aqua123</div>
+          <div class="coupon-code"><i>discount: </i>aqua123</div>
         </div>
         <div class="col-lg-8 col-md-7 order-md-2 orderInfo">
           <h4 class="mb-3 check-title text-white">訂單資訊</h4>
@@ -169,7 +166,7 @@ export default {
     return {
       cart: {},
       isLoading: false,
-      coupon_code: "",
+      coupon_code: '',
       coupon_message: '',
       form: {
         user: {
@@ -209,7 +206,7 @@ export default {
       };
       vm.isLoading = true;
       this.$http.post(api, { data: coupon }).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         if(response.data.success){
           vm.getCart();
           vm.coupon_message = '';
@@ -222,15 +219,14 @@ export default {
     createOrder () {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`;
       const vm = this;
-      vm.isLoading = true;
       const order = vm.form;
+      vm.isLoading = true;
       
       this.$http.post(api, { data: order }).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.isLoading = false;
         vm.$router.push(`/purchase/${response.data.orderId}`)
       });
-         
     }
   },
   created() {
@@ -246,7 +242,6 @@ export default {
 <style lang="scss" scoped>
 .list-group-item {
   border-radius: 4px;
-  // margin-bottom: 10px;
 }
 .checkout-cart .cart-img {
   height: 42px;

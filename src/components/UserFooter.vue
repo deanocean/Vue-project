@@ -2,18 +2,18 @@
   <div>
     <footer class="footer py-3 mt-5">
       <div class="container">
-        <ul class="list-inline text-center contact-info mb-2">
-          <li class="list-inline-item">
-            <a href="#" class="text-primary"
-              ><i class="fab fa-facebook-f text-white"></i
-            ></a>
-          </li>
+        <ul class="list-inline text-center contact-info mb-1">
           <li class="list-inline-item">
             <a href="#" class="text-primary"><i class="fab fa-github text-white"></i></a>
           </li>
           <li class="list-inline-item">
             <a href="#" class="text-primary"
               ><i class="fab fa-instagram text-white"></i
+            ></a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#" class="text-primary"
+              ><i class="fab fa-facebook-f text-white"></i
             ></a>
           </li>
           <li class="list-inline-item">
@@ -34,13 +34,7 @@
   </div>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style lang="scss" scoped>
-
-
 .footer {
     border-top: 1px solid #dee2e6;
 }
@@ -49,8 +43,8 @@ export default {};
     margin-top: 15px;
     li {
       font-size: 1.7rem;
-      height: 42px;
-      width: 42px;
+      height: 50px;
+      width: 50px;
     }
 }
 .copyright {

@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // 官方的元件
 
-// import Home from '@/components/HelloWorld'
 import Login from '@/components/admin/pages/Login'
 import Dashboard from '@/components/admin/Dashboard'
 import Products from '@/components/admin/pages/Products'

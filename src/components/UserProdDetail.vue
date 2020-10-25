@@ -57,22 +57,15 @@
 </template>
 
 <script>
-import UserNavbar from './UserNavbar';
-import UserFooter from './UserFooter';
 
 export default {
     data() {
         return {
             product: {},
-            pagination: {},
             isLoading: false,
             cart: {},
             prodId: '',
         }
-    },
-    components: {
-        UserNavbar,
-        UserFooter,
     },
     methods: {
         getProduct(){
@@ -82,9 +75,9 @@ export default {
             console.log(url)
             vm.isLoading = true;
             this.$http.get(url).then((response) => {
+                // console.log(response);
                 vm.product = response.data.product;
                 vm.$set(vm.product, 'num', 1)
-                console.log(response);
                 vm.isLoading = false;
             });
         }, 
@@ -96,7 +89,7 @@ export default {
                 qty
             }
             this.$http.post(api, { data: cart }).then((response) => {
-                console.log(response.data)
+                // console.log(response.data)
                 vm.$bus.$emit('cartRefresh');
                 vm.$bus.$emit('message:push', response.data.message, 'success');
             })
