@@ -59,7 +59,7 @@
                             </div>
                         </div>      
                     </div>  
-                    <Pagination v-if="pagination !== {}" :pagination="pagination" v-on:pageChange="getProducts"></Pagination>
+                    <Pagination v-if="allProd" :pagination="pagination" v-on:pageChange="getProducts"></Pagination>
                 </div>
                 <!-- tab-content end -->
                 </div>
@@ -81,6 +81,7 @@ export default {
             pagination: {},
             isLoading: false,
             cart: {},
+            allProd: true,
         }
     },
     components: {
@@ -95,10 +96,12 @@ export default {
         getProducts (page = 1) {
             const vm = this;
             vm.isLoading = true;
+            vm.allProd = true;
             let api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products?page=${page}`;
 
             if(vm.currentPos !== 'all'){
                 api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
+                vm.allProd = false;
             }
             this.$http.get(api).then((response) => {
                 console.log(response.data.products)

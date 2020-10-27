@@ -130,6 +130,7 @@ export default {
           // console.log(response.data)
           vm.isLoading = false;
           if(response.data.success){
+            vm.$bus.$emit('cartRefresh'); // 使navbar的購物車更新
             vm.$router.push(`/purchaseCompleted`);
           }
       })
